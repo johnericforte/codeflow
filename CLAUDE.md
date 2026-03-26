@@ -33,8 +33,11 @@ Read the relevant skill file before working on tasks in that category.
 - **Package manager:** `pnpm` only — never `npm install` or `yarn`
 - **Linting:** `pnpm lint` must pass before every commit (Husky enforces this)
 - **Formatting:** `pnpm format` before committing
-- **Branching:** feature branches only — never commit directly to `main`
-- **PRs:** All merges to `main` go through a PR — use github-pr-review skill
+- **Branching:** `main` → production only (protected). `development` → integration branch.
+  Branch off `development` for all work: `feature/*`, `fix/*`, `chore/*`.
+  Never commit directly to `main` or `development`.
+- **PRs:** Feature/fix branches → PR to `development`. `development` → PR to `main` for releases.
+  Use github-pr-review skill for all PRs.
 
 ## Tech Stack
 
