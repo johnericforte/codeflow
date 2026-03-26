@@ -1,25 +1,24 @@
 // src/lib/converter/clipboard.ts
-// Copies Webflow XscpData JSON to the clipboard using the application/json
-// MIME type that Webflow Designer reads.
+// Copies Webflow XscpData JSON to the clipboard.
+// Webflow Designer reads clipboard text and parses the JSON itself,
+// so writing as text/plain is sufficient and avoids browser MIME restrictions.
 
 import type { WebflowXscpData } from "./types";
 
 export async function copyToWebflowClipboard(data: WebflowXscpData): Promise<void> {
   const json = JSON.stringify(data);
 
-  // Modern path: ClipboardItem API (Chrome, Edge, Safari 13.1+)
-  if (typeof ClipboardItem !== "undefined" && navigator.clipboard?.write) {
-    const blob = new Blob([json], { type: "application/json" });
-    const item = new ClipboardItem({ "application/json": blob });
-    await navigator.clipboard.write([item]);
+  // Modern path: writeText (all modern browsers, no MIME restrictions)
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(json);
     return;
   }
 
-  // Fallback: synthetic copy event (Firefox, older browsers)
+  // Fallback: synthetic copy event (older browsers / insecure contexts)
   await new Promise<void>((resolve, reject) => {
     const handler = (e: ClipboardEvent) => {
       try {
-        e.clipboardData?.setData("application/json", json);
+        e.clipboardData?.setData("text/plain", json);
         e.preventDefault();
         resolve();
       } catch (err) {
