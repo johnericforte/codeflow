@@ -205,14 +205,17 @@ const example = "value";
 
 Or use tildes:
 
-````markdown
+`````markdown
 ````suggestion
 ```javascript
 const example = "value";
 ````
-````
+`````
 
-````
+```
+
+```
+
 ```
 
 ## Common Mistakes
@@ -259,6 +262,7 @@ Stop if you're thinking:
 First, analyze the PR and draft your comments. Then use AskUserQuestion:
 
 ```
+
 I've reviewed PR #123 and found 3 issues. Here's what I'll post:
 
 **Comment 1:** src/auth.ts line 20
@@ -277,7 +281,8 @@ Missing error case test...
 **Overall message:** "Found 3 issues that need to be addressed before merging."
 
 Ready to post this review?
-```
+
+````
 
 **Step 2: After approval, post the review**
 
@@ -305,19 +310,24 @@ gh api repos/:owner/:repo/pulls/123/reviews/<REVIEW_ID>/events \
   -X POST \
   -f event="REQUEST_CHANGES" \
   -f body="Found 3 issues that need to be addressed before merging."
-```
+````
 
 ## Real-World Impact
 
 **Without this pattern:**
+
 - Multiple separate notifications spam the PR author
 - Can't batch feedback together
 - Easy to forget issues while reviewing
 - Inconsistent workflow based on perceived urgency
 
 **With this pattern:**
+
 - All feedback in one coherent review
 - PR author gets one notification with full context
 - Can refine comments before posting
 - Professional, organized reviews
-````
+
+```
+
+```

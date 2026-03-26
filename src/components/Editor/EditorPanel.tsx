@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import EditorTabs from "./EditorTabs";
 import ConvertButton from "./ConvertButton";
 import { STARTER_HTML, STARTER_CSS, STARTER_JS } from "@/lib/editor/starterCode";
+import { convert } from "@/lib/converter";
 import type { EditorLanguage } from "./CodeEditor";
 
 // Dynamically import CodeEditor to avoid SSR issues with CodeMirror
@@ -52,12 +53,21 @@ export default function EditorPanel() {
   const handleConvert = async () => {
     setIsConverting(true);
     try {
-      // Conversion engine is built in Phase 3.
-      // For now, show a placeholder success to validate the clipboard flow.
-      await new Promise((r) => setTimeout(r, 600)); // simulate async work
-      showToast({ type: "success", message: "Copied! Paste into Webflow Designer (Ctrl+V)" });
+      const result = await convert({ html: htmlCode, css: cssCode, js: jsCode });
+      if (result.success) {
+        const msg =
+          result.warnings && result.warnings.length > 0
+            ? `Copied! ${result.warnings.length} warning(s) — check Webflow`
+            : "Copied! Paste into Webflow Designer (Ctrl+V)";
+        showToast({ type: "success", message: msg });
+      } else {
+        showToast({
+          type: "error",
+          message: result.error ?? "Conversion failed. Check your HTML/CSS.",
+        });
+      }
     } catch {
-      showToast({ type: "error", message: "Conversion failed. Check your HTML/CSS syntax." });
+      showToast({ type: "error", message: "Unexpected error during conversion." });
     } finally {
       setIsConverting(false);
     }

@@ -31,7 +31,6 @@ export type WebflowNodeType =
 
 export interface WebflowNodeData {
   tag?: string;
-  text?: boolean;
   xattr?: Array<{ name: string; value: string }>;
   search?: { exclude: boolean };
   visibility?: { conditions: unknown[] };
@@ -67,6 +66,7 @@ export interface WebflowNode {
   classes: string[]; // Array of style _id UUIDs
   children: string[]; // Array of child node _id UUIDs
   data: WebflowNodeData;
+  v?: string; // Inline text content (Webflow's format for text inside elements)
 }
 
 // ============================================================
