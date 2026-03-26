@@ -61,14 +61,12 @@ function walkElement(el: Element, allNodes: WebflowNode[], warnings: string[]): 
   // Collect class names — an element may have multiple classes
   const classNames = Array.from(el.classList);
 
-  // Build node data
+  // Build node data — keep only fields Webflow expects
   const data: WebflowNodeData = {
     tag,
     xattr: [],
     search: { exclude: false },
     visibility: { conditions: [] },
-    displayName: "",
-    attr: {},
   };
 
   if (type === "Heading") {
@@ -78,12 +76,14 @@ function walkElement(el: Element, allNodes: WebflowNode[], warnings: string[]): 
   if (type === "Link") {
     const href = el.getAttribute("href") ?? "";
     const target = el.getAttribute("target") ?? "";
+    // "section" mode requires a real element ID — bare "#" is external
+    const mode = href.startsWith("#") && href.length > 1 ? "section" : "external";
     data.link = {
       url: href,
-      mode: href.startsWith("#") ? "section" : "external",
+      mode,
       ...(target ? { target } : {}),
     };
-    if (href) data.attr = { href };
+    // Do NOT duplicate href into data.attr — data.link already owns it
   }
 
   if (type === "Image") {
@@ -92,7 +92,7 @@ function walkElement(el: Element, allNodes: WebflowNode[], warnings: string[]): 
     data.img = { url: src, alt };
   }
 
-  // Handle generic attributes (id, data-*, aria-*, etc.)
+  // Custom attributes only (id, data-*, aria-*, etc.) — never standard HTML attrs
   const genericAttrs: Record<string, string> = {};
   for (const attr of Array.from(el.attributes)) {
     if (!["class", "href", "src", "alt", "target"].includes(attr.name)) {
@@ -100,7 +100,7 @@ function walkElement(el: Element, allNodes: WebflowNode[], warnings: string[]): 
     }
   }
   if (Object.keys(genericAttrs).length > 0) {
-    data.attr = { ...data.attr, ...genericAttrs };
+    data.attr = genericAttrs;
   }
 
   // Walk children: collect element children as child IDs,

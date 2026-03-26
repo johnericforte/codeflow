@@ -29,6 +29,9 @@ export async function convert(input: ConvertInput): Promise<ConvertResult> {
     // 3. Build XscpData JSON (assigns style UUIDs, handles JS embed)
     const data = buildXscpData(nodes, rootIds, cssMap, input.js, warnings);
 
+    // Debug: inspect the generated JSON in DevTools before clipboard write
+    console.log("[Codeflow] XscpData JSON:", JSON.stringify(data, null, 2));
+
     // 4. Copy to clipboard with application/json MIME type
     await copyToWebflowClipboard(data);
 

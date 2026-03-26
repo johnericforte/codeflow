@@ -139,8 +139,8 @@ function finalizeNodes(
       node.classes = resolveStyleIds(classNames, cssMap, registry);
     }
 
-    // Clear the temporary class name storage from displayName
-    node.data.displayName = "";
+    // Remove the temporary class name storage — don't leave empty string on the node
+    delete node.data.displayName;
   }
 }
 
