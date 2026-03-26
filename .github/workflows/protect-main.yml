@@ -1,0 +1,30 @@
+name: Protect main branch
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  require-development-source:
+    name: Source must be development
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR source branch
+        run: |
+          echo "PR source branch: ${{ github.head_ref }}"
+          if [ "${{ github.head_ref }}" != "development" ]; then
+            echo ""
+            echo "❌ Direct PRs to main are not allowed."
+            echo ""
+            echo "   Only the 'development' branch can be merged into 'main'."
+            echo ""
+            echo "   Correct workflow:"
+            echo "     1. Branch off development"
+            echo "     2. Open a PR to development"
+            echo "     3. Merge into development"
+            echo "     4. Open a PR from development → main for release"
+            echo ""
+            exit 1
+          fi
+          echo "✅ Source is 'development' — merge allowed."
