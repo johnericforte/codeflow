@@ -27,16 +27,13 @@ export const metadata: Metadata = {
   keywords: ["webflow", "html to webflow", "css converter", "client-first", "webflow components"],
   openGraph: {
     title: "Codeflow — Code → Webflow, instantly.",
-    description: "Convert HTML/CSS/JS to Webflow components. Client-First naming, responsive breakpoints, one-click clipboard copy.",
+    description:
+      "Convert HTML/CSS/JS to Webflow components. Client-First naming, responsive breakpoints, one-click clipboard copy.",
     type: "website",
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark">
       <body

@@ -3,6 +3,7 @@
 ## Session: 2026-03-26
 
 ### Phase 0: Research & Planning
+
 - **Status:** complete
 - **Started:** 2026-03-26
 - Actions taken:
@@ -25,6 +26,7 @@
   - progress.md (created)
 
 ### Phase 1: Project Setup & Architecture
+
 - **Status:** in_progress
 - Actions taken:
   - Scaffolded Next.js 14 project with TypeScript, Tailwind, App Router
@@ -39,6 +41,7 @@
   - Project location: `\\wsl.localhost\Ubuntu\home\e_forte\code\codeflow`
 
 ### Phase 2: Code Editor UI
+
 - **Status:** complete
 - Actions taken:
   - Fixed Tailwind v4 PostCSS config — installed `@tailwindcss/postcss`, updated `postcss.config.js`, migrated `globals.css` to use `@import "tailwindcss"` + `@theme` block
@@ -59,51 +62,51 @@
   - postcss.config.js (updated to @tailwindcss/postcss)
 
 ### Phase 3: Conversion Engine (Core)
+
 - **Status:** pending
-- Actions taken:
-  -
-- Files created/modified:
-  -
+- ## Actions taken:
+- ## Files created/modified:
 
 ### Phase 4: Landing Page & Animations
+
 - **Status:** pending
-- Actions taken:
-  -
-- Files created/modified:
-  -
+- ## Actions taken:
+- ## Files created/modified:
 
 ### Phase 5: Testing & QA
+
 - **Status:** pending
-- Actions taken:
-  -
-- Files created/modified:
-  -
+- ## Actions taken:
+- ## Files created/modified:
 
 ### Phase 6: Launch Preparation
+
 - **Status:** pending
-- Actions taken:
-  -
-- Files created/modified:
-  -
+- ## Actions taken:
+- ## Files created/modified:
 
 ## Test Results
-| Test | Input | Expected | Actual | Status |
-|------|-------|----------|--------|--------|
-| (none yet) | — | — | — | — |
+
+| Test       | Input | Expected | Actual | Status |
+| ---------- | ----- | -------- | ------ | ------ |
+| (none yet) | —     | —        | —      | —      |
 
 ## Error Log
-| Timestamp | Error | Attempt | Resolution |
-|-----------|-------|---------|------------|
-| (none yet) | — | — | — |
+
+| Timestamp  | Error | Attempt | Resolution |
+| ---------- | ----- | ------- | ---------- |
+| (none yet) | —     | —       | —          |
 
 ## 5-Question Reboot Check
-| Question | Answer |
-|----------|--------|
-| Where am I? | Phase 2 complete — Phase 3 (Conversion Engine) is next |
-| Where am I going? | Phase 3 (Conversion Engine), Phase 4 (Landing Page), Phase 5 (Testing), Phase 6 (Launch) |
-| What's the goal? | Build free Codeflow tool: HTML/CSS/JS → Webflow XscpData JSON with Client-First naming |
+
+| Question             | Answer                                                                                          |
+| -------------------- | ----------------------------------------------------------------------------------------------- |
+| Where am I?          | Phase 2 complete — Phase 3 (Conversion Engine) is next                                          |
+| Where am I going?    | Phase 3 (Conversion Engine), Phase 4 (Landing Page), Phase 5 (Testing), Phase 6 (Launch)        |
+| What's the goal?     | Build free Codeflow tool: HTML/CSS/JS → Webflow XscpData JSON with Client-First naming          |
 | What have I learned? | XscpData format, Client-First conventions, clipboard API strategy, tech stack — see findings.md |
-| What have I done? | Completed all research, created project plan, installed planning skill — see above |
+| What have I done?    | Completed all research, created project plan, installed planning skill — see above              |
 
 ---
-*Update after completing each phase or encountering errors*
+
+_Update after completing each phase or encountering errors_
