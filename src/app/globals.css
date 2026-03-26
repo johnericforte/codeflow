@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DESIGN TOKENS — mirrors tailwind.config.js for non-Tailwind use
+   ============================================================ */
+:root {
+  /* Primary — Electric Blue */
+  --color-primary: #2463EB;
+  --color-primary-light: #4A85F2;
+  --color-primary-dark: #1A4FBF;
+
+  /* Accent — Teal/Green */
+  --color-accent: #06D6A0;
+  --color-accent-light: #34E0B5;
+  --color-accent-dark: #04B386;
+
+  /* Backgrounds */
+  --color-bg-primary: #0A0E17;
+  --color-bg-secondary: #111827;
+  --color-bg-tertiary: #1F2937;
+
+  /* Text */
+  --color-text-primary: #F9FAFB;
+  --color-text-secondary: #9CA3AF;
+  --color-text-tertiary: #6B7280;
+
+  /* Semantic */
+  --color-success: #06D6A0;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
+
+  /* Editor */
+  --color-editor-bg: #0D1117;
+  --color-editor-gutter: #161B22;
+  --color-editor-line-highlight: #1A2233;
+  --color-tab-active: #2463EB;
+  --color-tab-inactive: #1F2937;
+
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* ============================================================
+   BASE RESET
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+@layer utilities {
+  .font-display {
+    font-family: var(--font-syne), sans-serif;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-hero {
+    background: linear-gradient(
+      135deg,
+      #ffffff 0%,
+      var(--color-primary-light) 50%,
+      var(--color-accent) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ============================================================
+   COMPONENT BASE CLASSES
+   ============================================================ */
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-white transition-all duration-200;
+    background: var(--color-primary);
+    &:hover {
+      background: var(--color-primary-light);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(36, 99, 235, 0.35);
+    }
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg font-medium transition-all duration-200;
+    color: var(--color-text-secondary);
+    border: 1px solid transparent;
+    &:hover {
+      color: var(--color-text-primary);
+      border-color: var(--color-bg-tertiary);
+      background: var(--color-bg-tertiary);
+    }
+  }
+
+  /* Cards */
+  .card {
+    @apply rounded-xl border;
+    background: var(--color-bg-secondary);
+    border-color: var(--color-bg-tertiary);
+  }
+
+  /* Section container */
+  .container-content {
+    @apply mx-auto w-full px-6 max-w-6xl;
+  }
+}
+
+/* ============================================================
+   SCROLLBAR STYLING
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-editor-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-tertiary);
+}
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+::selection {
+  background: rgba(36, 99, 235, 0.3);
+  color: white;
+}
+
+/* ============================================================
+   FOCUS RING
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(36, 99, 235, 0);
+  }
+  50% {
+    box-shadow: 0 0 30px 8px rgba(36, 99, 235, 0.2);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease forwards;
+}
+
+/* Stagger helpers */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
