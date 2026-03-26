@@ -31,14 +31,14 @@ No copy-pasting class names. No rebuilding layouts from scratch. No manual style
 
 ## Tech stack
 
-| Layer | Choice |
-|---|---|
-| Framework | Next.js 14 (App Router) + TypeScript |
-| Styling | Tailwind CSS v4 + CSS variables |
-| Code editor | CodeMirror 6 via `@uiw/react-codemirror` |
-| Fonts | Syne (display) · DM Sans (body) · JetBrains Mono (code) |
-| Hosting | Vercel |
-| Package manager | pnpm |
+| Layer           | Choice                                                  |
+| --------------- | ------------------------------------------------------- |
+| Framework       | Next.js 14 (App Router) + TypeScript                    |
+| Styling         | Tailwind CSS v4 + CSS variables                         |
+| Code editor     | CodeMirror 6 via `@uiw/react-codemirror`                |
+| Fonts           | Syne (display) · DM Sans (body) · JetBrains Mono (code) |
+| Hosting         | Vercel                                                  |
+| Package manager | pnpm                                                    |
 
 ---
 
@@ -112,14 +112,14 @@ src/
 
 ## Roadmap
 
-| Phase | Status | Description |
-|---|---|---|
-| 1 — Foundation | ✅ Done | Project scaffold, design system, XscpData types |
-| 2 — Editor UI | ✅ Done | CodeMirror 6 editor, tabs, convert button |
-| 3 — Conversion engine | 🔄 Next | HTML parser → CSS parser → XscpData builder → clipboard |
-| 4 — Landing page | ⏳ Pending | Hero, How it works, Features, animations |
-| 5 — Testing & QA | ⏳ Pending | Webflow paste tests, Lighthouse audit |
-| 6 — Launch | ⏳ Pending | Domain, OG image, Product Hunt |
+| Phase                 | Status     | Description                                             |
+| --------------------- | ---------- | ------------------------------------------------------- |
+| 1 — Foundation        | ✅ Done    | Project scaffold, design system, XscpData types         |
+| 2 — Editor UI         | ✅ Done    | CodeMirror 6 editor, tabs, convert button               |
+| 3 — Conversion engine | 🔄 Next    | HTML parser → CSS parser → XscpData builder → clipboard |
+| 4 — Landing page      | ⏳ Pending | Hero, How it works, Features, animations                |
+| 5 — Testing & QA      | ⏳ Pending | Webflow paste tests, Lighthouse audit                   |
+| 6 — Launch            | ⏳ Pending | Domain, OG image, Product Hunt                          |
 
 ---
 
@@ -131,13 +131,27 @@ Codeflow outputs the `@webflow/XscpData` JSON structure:
 {
   "type": "@webflow/XscpData",
   "payload": {
-    "nodes": [{ "_id": "uuid", "type": "Block", "tag": "div", "classes": ["style-uuid"], "children": [] }],
-    "styles": [{ "_id": "style-uuid", "name": "section_hero", "styleLess": "display: flex; padding: 4rem 2rem;" }],
+    "nodes": [
+      { "_id": "uuid", "type": "Block", "tag": "div", "classes": ["style-uuid"], "children": [] }
+    ],
+    "styles": [
+      {
+        "_id": "style-uuid",
+        "name": "section_hero",
+        "styleLess": "display: flex; padding: 4rem 2rem;"
+      }
+    ],
     "assets": [],
     "ix1": [],
     "ix2": { "interactions": [], "events": [], "actionLists": [] }
   },
-  "meta": { "unlinkedSymbolCount": 0, "droppedLinks": 0, "dynBindRemovedCount": 0, "dynListBindRemovedCount": 0, "paginationRemovedCount": 0 }
+  "meta": {
+    "unlinkedSymbolCount": 0,
+    "droppedLinks": 0,
+    "dynBindRemovedCount": 0,
+    "dynListBindRemovedCount": 0,
+    "paginationRemovedCount": 0
+  }
 }
 ```
 
@@ -151,4 +165,4 @@ MIT — free to use, fork, and build on.
 
 ---
 
-*Built with [Claude Code](https://claude.com/claude-code)*
+_Built with [Claude Code](https://claude.com/claude-code)_
