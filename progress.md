@@ -39,11 +39,24 @@
   - Project location: `\\wsl.localhost\Ubuntu\home\e_forte\code\codeflow`
 
 ### Phase 2: Code Editor UI
-- **Status:** pending
+- **Status:** complete
 - Actions taken:
-  -
+  - Fixed Tailwind v4 PostCSS config — installed `@tailwindcss/postcss`, updated `postcss.config.js`, migrated `globals.css` to use `@import "tailwindcss"` + `@theme` block
+  - Built `CodeEditor.tsx` — `@uiw/react-codemirror` wrapper with custom Codeflow theme (GitHub-dark editor, JetBrains Mono, accent highlights)
+  - Built `EditorTabs.tsx` — HTML/CSS/JS tab switcher with language color dots and active underline indicator
+  - Built `ConvertButton.tsx` — gradient CTA with lightning icon, loading state, hover glow overlay
+  - Built `EditorPanel.tsx` — full editor container with: window chrome, tab bar, 420px CodeMirror editor, footer with line count, convert button, toast notifications; dynamically imports CodeEditor to avoid SSR issues
+  - Added sample starter code (hero section HTML/CSS + JS) to each editor tab
+  - Updated `page.tsx` to render placeholder Navbar + Hero + EditorPanel
+  - `pnpm build` passes — all types valid, no lint errors
 - Files created/modified:
-  -
+  - src/components/Editor/CodeEditor.tsx (created)
+  - src/components/Editor/EditorTabs.tsx (created)
+  - src/components/Editor/ConvertButton.tsx (created)
+  - src/components/Editor/EditorPanel.tsx (created)
+  - src/app/page.tsx (updated)
+  - src/app/globals.css (migrated to Tailwind v4 syntax)
+  - postcss.config.js (updated to @tailwindcss/postcss)
 
 ### Phase 3: Conversion Engine (Core)
 - **Status:** pending
@@ -86,8 +99,8 @@
 ## 5-Question Reboot Check
 | Question | Answer |
 |----------|--------|
-| Where am I? | Phase 1 — Project Setup & Architecture |
-| Where am I going? | Phase 2 (Editor UI), Phase 3 (Conversion Engine), Phase 4 (Landing Page), Phase 5 (Testing), Phase 6 (Launch) |
+| Where am I? | Phase 2 complete — Phase 3 (Conversion Engine) is next |
+| Where am I going? | Phase 3 (Conversion Engine), Phase 4 (Landing Page), Phase 5 (Testing), Phase 6 (Launch) |
 | What's the goal? | Build free Codeflow tool: HTML/CSS/JS → Webflow XscpData JSON with Client-First naming |
 | What have I learned? | XscpData format, Client-First conventions, clipboard API strategy, tech stack — see findings.md |
 | What have I done? | Completed all research, created project plan, installed planning skill — see above |
