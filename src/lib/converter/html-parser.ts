@@ -64,7 +64,6 @@ function walkElement(el: Element, allNodes: WebflowNode[], warnings: string[]): 
   // Build node data
   const data: WebflowNodeData = {
     tag,
-    text: false,
     xattr: [],
     search: { exclude: false },
     visibility: { conditions: [] },
@@ -104,8 +103,10 @@ function walkElement(el: Element, allNodes: WebflowNode[], warnings: string[]): 
     data.attr = { ...data.attr, ...genericAttrs };
   }
 
-  // Walk child elements (element nodes only — text nodes handled separately)
+  // Walk children: collect element children as child IDs,
+  // and accumulate direct text content into the parent's v field.
   const childIds: string[] = [];
+  const textParts: string[] = [];
 
   for (const child of Array.from(el.childNodes)) {
     if (child.nodeType === Node.ELEMENT_NODE) {
@@ -113,29 +114,11 @@ function walkElement(el: Element, allNodes: WebflowNode[], warnings: string[]): 
       childIds.push(childId);
     } else if (child.nodeType === Node.TEXT_NODE) {
       const text = child.textContent?.trim() ?? "";
-      if (text) {
-        // Text nodes become simple Block nodes with data.text = true
-        const textId = generateUUID();
-        allNodes.push({
-          _id: textId,
-          type: "Block",
-          tag: "span",
-          classes: [],
-          children: [],
-          data: {
-            tag: "span",
-            text: true,
-            xattr: [],
-            search: { exclude: false },
-            visibility: { conditions: [] },
-            displayName: text.slice(0, 50),
-            attr: {},
-          },
-        });
-        childIds.push(textId);
-      }
+      if (text) textParts.push(text);
     }
   }
+
+  const inlineText = textParts.join(" ") || undefined;
 
   // classes array is populated later by webflow-builder (needs style UUIDs)
   // We temporarily store class names in displayName for builder lookup
@@ -150,6 +133,7 @@ function walkElement(el: Element, allNodes: WebflowNode[], warnings: string[]): 
       // Store original class names for builder to look up style UUIDs
       displayName: classNames.join(" "),
     },
+    ...(inlineText !== undefined ? { v: inlineText } : {}),
   };
 
   if (type === "Heading" && data.level !== undefined) {

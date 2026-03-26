@@ -124,12 +124,6 @@ function finalizeNodes(
   warnings: string[]
 ): void {
   for (const node of nodes) {
-    // Skip text nodes (no classes)
-    if (node.data.text) {
-      node.data.displayName = "";
-      continue;
-    }
-
     const rawDisplayName = node.data.displayName ?? "";
     const classNames = rawDisplayName ? rawDisplayName.split(/\s+/).filter(Boolean) : [];
 
@@ -161,7 +155,6 @@ function buildJsEmbedNode(js: string): WebflowNode {
     children: [],
     data: {
       tag: "div",
-      text: false,
       xattr: [],
       search: { exclude: false },
       visibility: { conditions: [] },
