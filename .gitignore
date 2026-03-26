@@ -37,3 +37,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Windows Zone.Identifier metadata files (WSL artifact)
+*:Zone.Identifier
+*.zip
