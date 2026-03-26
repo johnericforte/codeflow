@@ -75,6 +75,7 @@
 | Next.js 14+ App Router | File-based routing, server components for SEO, image optimization for later features |
 | TypeScript strict mode | XscpData JSON is complex — types prevent bugs in node/style/variant construction |
 | pnpm (not npm) | Faster installs, strict isolation prevents phantom deps, disk-efficient store, `engine-strict` blocks accidental npm use |
+| ESLint + Prettier + typescript-eslint + jsx-a11y | Full lint stack — type-aware rules, React hooks enforcement, a11y checks baked in from day one |
 | CodeMirror 6 over Monaco | Lighter weight (~150KB vs ~2MB), MIT license, better mobile support |
 | Tailwind CSS + CSS Variables | Utility-first speeds up development, built-in responsive/dark mode, tree-shaken in production; CSS variables for design tokens |
 | GSAP or Framer Motion | Framer Motion is more React-native; GSAP is more powerful — decide during Phase 4 |

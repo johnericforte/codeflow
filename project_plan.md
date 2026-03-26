@@ -98,7 +98,19 @@ pnpm 9+ (enforced via packageManager field + .npmrc)
 - `engine-strict=true` blocks accidental npm/yarn usage
 - Lockfile: `pnpm-lock.yaml` (committed, `package-lock.json` gitignored)
 
-### CSS Strategy
+### Linting & Formatting
+```
+ESLint + Prettier + TypeScript ESLint + jsx-a11y
+```
+- **ESLint** — static analysis, catches bugs before runtime
+- **@typescript-eslint** — TypeScript-aware rules, no-unused-vars, no-explicit-any
+- **eslint-plugin-react + react-hooks** — React best practices, hooks rules
+- **eslint-plugin-jsx-a11y** — accessibility linting (supports Lighthouse 90+ target)
+- **Prettier** — opinionated formatter, zero style debates, integrates with VS Code on save
+- **eslint-config-prettier** — disables ESLint rules that conflict with Prettier
+- Scripts: `pnpm lint`, `pnpm lint:fix`, `pnpm format`, `pnpm format:check`
+
+
 ```
 Tailwind CSS + CSS Variables
 ```

@@ -79,6 +79,7 @@ Phase 1
 | Name: Codeflow (lowercase f) | Reads as single unified word, matches product naming convention (Webflow, Figma, Notion) |
 | Next.js + TypeScript + React | Type safety critical for complex JSON structures, component architecture for UI, SSR for SEO |
 | pnpm (not npm) | Faster installs, strict dependency isolation, disk-efficient content-addressable store |
+| ESLint + Prettier + typescript-eslint | Catches bugs early, enforces consistent style, jsx-a11y supports Lighthouse 90+ target |
 | Vercel hosting | Natural pairing with Next.js, frictionless DX, free tier sufficient for launch |
 | CodeMirror 6 | Industry standard web editor, MIT license, lightweight, supports HTML/CSS/JS modes |
 | Tailwind CSS | Rapid utility-first styling, built-in dark mode, responsive utilities, great Next.js integration |

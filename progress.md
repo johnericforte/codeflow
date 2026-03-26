@@ -32,7 +32,10 @@
   - Set up design token system in globals.css and tailwind.config.js
   - Created XscpData TypeScript types (types.ts)
   - **Switched from npm to pnpm** — added `packageManager` field, `.npmrc`, updated `.gitignore`
-  - Updated project_plan.md, task_plan.md, findings.md to reflect pnpm decision
+  - **Set up linting stack** — ESLint + Prettier + @typescript-eslint + eslint-plugin-react-hooks + eslint-plugin-jsx-a11y + eslint-config-prettier
+  - Added `.prettierrc`, `.prettierignore`, updated `.eslintrc.json` and `package.json` scripts
+  - Cleaned up all `Zone.Identifier` metadata files from repo
+  - Updated project_plan.md, task_plan.md, findings.md to reflect all decisions
   - Project location: `\\wsl.localhost\Ubuntu\home\e_forte\code\codeflow`
 
 ### Phase 2: Code Editor UI
