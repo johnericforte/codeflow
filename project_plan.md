@@ -8,13 +8,13 @@
 
 ### Name Options
 
-| Option | Pros | Cons |
-|--------|------|------|
-| `<html/> to webflow` | Descriptive, developer-friendly | Angle brackets break in URLs, hard to Google, looks like code not a brand |
-| **CodeFlow** ✅ | Clean, memorable, "Code" + "Flow" = perfect mashup, easy to type/search | Common-ish word |
-| **FlowCode** | Similar mashup | Less intuitive flow direction |
-| **Webfuse** | Unique, implies merging code into Webflow | Less immediately clear |
-| **PasteFlow** | Describes the action perfectly | Sounds like a clipboard tool |
+| Option               | Pros                                                                    | Cons                                                                      |
+| -------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `<html/> to webflow` | Descriptive, developer-friendly                                         | Angle brackets break in URLs, hard to Google, looks like code not a brand |
+| **CodeFlow** ✅      | Clean, memorable, "Code" + "Flow" = perfect mashup, easy to type/search | Common-ish word                                                           |
+| **FlowCode**         | Similar mashup                                                          | Less intuitive flow direction                                             |
+| **Webfuse**          | Unique, implies merging code into Webflow                               | Less immediately clear                                                    |
+| **PasteFlow**        | Describes the action perfectly                                          | Sounds like a clipboard tool                                              |
 
 ### Recommendation: **CodeFlow**
 
@@ -23,6 +23,7 @@
 **Logo concept:** A minimal monospace `</>` icon with a subtle arrow or flow line morphing into a Webflow-inspired "W" shape. The `</>` acts as the icon mark, "CodeFlow" as the wordmark.
 
 Why not `<html/> to webflow`?
+
 - Angle brackets can't appear in URLs, social handles, or most SEO contexts
 - It reads as code, not as a product name — hard to say out loud or recommend verbally
 - Trademark concerns using "Webflow" directly in the product name (Webflow is a registered trademark)
@@ -34,14 +35,14 @@ Why not `<html/> to webflow`?
 
 ### Why Vercel?
 
-| Factor | Vercel | Notes |
-|--------|--------|-------|
-| **Next.js integration** | ✅ Built by Next.js team | Zero-config deployment, instant previews |
-| **Bandwidth (free)** | 100 GB/month | Sufficient for launch |
-| **Build minutes (free)** | 6,000 min/month | 20x more than Netlify free |
-| **Edge network** | ✅ ~70ms TTFB globally | Faster than Netlify (~90ms) |
-| **DX quality** | ✅ Best-in-class for Next.js | Auto previews per PR, instant rollbacks |
-| **Git integration** | ✅ GitHub, GitLab, Bitbucket | Auto-deploy from `main` |
+| Factor                   | Vercel                       | Notes                                    |
+| ------------------------ | ---------------------------- | ---------------------------------------- |
+| **Next.js integration**  | ✅ Built by Next.js team     | Zero-config deployment, instant previews |
+| **Bandwidth (free)**     | 100 GB/month                 | Sufficient for launch                    |
+| **Build minutes (free)** | 6,000 min/month              | 20x more than Netlify free               |
+| **Edge network**         | ✅ ~70ms TTFB globally       | Faster than Netlify (~90ms)              |
+| **DX quality**           | ✅ Best-in-class for Next.js | Auto previews per PR, instant rollbacks  |
+| **Git integration**      | ✅ GitHub, GitLab, Bitbucket | Auto-deploy from `main`                  |
 
 **Note:** Vercel's free "Hobby" tier prohibits commercial use. This is fine for launch as a free tool. If monetization is added later (ads, sponsorships, paid tier), upgrade to Pro ($20/month).
 
@@ -50,17 +51,21 @@ Why not `<html/> to webflow`?
 ## 3. Tech Stack (100% Free & Open Source)
 
 ### Framework
+
 ```
 Next.js 14+ (App Router) + TypeScript + React
 ```
+
 - **Next.js** — File-based routing, SSR/SSG for SEO, image optimization, built-in API routes
 - **TypeScript** — Critical for type-safe XscpData JSON construction (nodes, styles, variants)
 - **React** — Component architecture for editor UI, tabs, toasts, modals
 
 ### Code Editor
+
 ```
 CodeMirror 6 (MIT License) + @codemirror/lang-html, @codemirror/lang-css, @codemirror/lang-javascript
 ```
+
 - Industry-standard web code editor (used by Chrome DevTools, Replit, etc.)
 - Syntax highlighting for HTML, CSS, JS
 - Themes, autocomplete, bracket matching
@@ -68,30 +73,36 @@ CodeMirror 6 (MIT License) + @codemirror/lang-html, @codemirror/lang-css, @codem
 - React wrapper: `@uiw/react-codemirror`
 
 ### Animations & Visual Effects
+
 ```
 Framer Motion (MIT) — React-native animation library
 Lenis (smooth scrolling - MIT)
 CSS Animations (zero-cost, native)
 ```
+
 - **Framer Motion** — First-class React support, declarative API, layout animations
 - **Lenis** — Buttery smooth scrolling by Studio Freight (MIT)
 - **Three.js** — Optional for a subtle hero background effect (particles, mesh gradient)
 - Note: Keep animations tasteful and performant — minimalist but premium feel
 
 ### Fonts
+
 ```
 Primary: "DM Sans" (Google Fonts, free) — geometric sans-serif similar to WF Visual Sans
 Monospace: "JetBrains Mono" (Google Fonts, free) — for code editor
 Display: "Syne" (Google Fonts, free) — for hero headlines
 ```
+
 - Webflow uses "WF Visual Sans" (proprietary, geometric). DM Sans is the closest free alternative
 - JetBrains Mono is beautiful for code and completely open source
 - Loaded via `next/font/google` for zero layout shift
 
 ### Package Manager
+
 ```
 pnpm 9+ (enforced via packageManager field + .npmrc)
 ```
+
 - Faster installs via content-addressable store (shared across projects)
 - Strict dependency isolation prevents phantom dependency bugs
 - `shamefully-hoist=true` for Next.js compatibility
@@ -99,9 +110,11 @@ pnpm 9+ (enforced via packageManager field + .npmrc)
 - Lockfile: `pnpm-lock.yaml` (committed, `package-lock.json` gitignored)
 
 ### Linting & Formatting
+
 ```
 ESLint + Prettier + TypeScript ESLint + jsx-a11y
 ```
+
 - **ESLint** — static analysis, catches bugs before runtime
 - **@typescript-eslint** — TypeScript-aware rules, no-unused-vars, no-explicit-any
 - **eslint-plugin-react + react-hooks** — React best practices, hooks rules
@@ -110,10 +123,10 @@ ESLint + Prettier + TypeScript ESLint + jsx-a11y
 - **eslint-config-prettier** — disables ESLint rules that conflict with Prettier
 - Scripts: `pnpm lint`, `pnpm lint:fix`, `pnpm format`, `pnpm format:check`
 
-
 ```
 Tailwind CSS + CSS Variables
 ```
+
 - Utility-first approach speeds up UI development dramatically
 - Built-in responsive utilities (`md:`, `lg:`) and dark mode (`dark:`)
 - Tree-shaken in production — only ships CSS you actually use
@@ -121,9 +134,11 @@ Tailwind CSS + CSS Variables
 - `@apply` directive for reusable component patterns when needed
 
 ### Build & Deploy
+
 ```
 Next.js → Vercel (auto-deploy from GitHub main branch)
 ```
+
 - Zero server costs on Hobby tier
 - Automatic deploys from GitHub `main` branch
 - Preview deploys for every PR
@@ -138,34 +153,34 @@ Next.js → Vercel (auto-deploy from GitHub main branch)
 ```css
 :root {
   /* Primary — Electric Blue (Webflow-inspired, slightly warmer) */
-  --color-primary: #2463EB;
-  --color-primary-light: #4A85F2;
-  --color-primary-dark: #1A4FBF;
+  --color-primary: #2463eb;
+  --color-primary-light: #4a85f2;
+  --color-primary-dark: #1a4fbf;
 
   /* Accent — Cyan/Teal (our differentiator) */
-  --color-accent: #06D6A0;
-  --color-accent-light: #34E0B5;
-  --color-accent-dark: #04B386;
+  --color-accent: #06d6a0;
+  --color-accent-light: #34e0b5;
+  --color-accent-dark: #04b386;
 
   /* Neutrals — Cool grays with blue undertone */
-  --color-bg-primary: #0A0E17;         /* Deep navy-black */
-  --color-bg-secondary: #111827;       /* Card/editor background */
-  --color-bg-tertiary: #1F2937;        /* Elevated surfaces */
-  --color-text-primary: #F9FAFB;       /* White text */
-  --color-text-secondary: #9CA3AF;     /* Muted text */
-  --color-text-tertiary: #6B7280;      /* Subtle text */
+  --color-bg-primary: #0a0e17; /* Deep navy-black */
+  --color-bg-secondary: #111827; /* Card/editor background */
+  --color-bg-tertiary: #1f2937; /* Elevated surfaces */
+  --color-text-primary: #f9fafb; /* White text */
+  --color-text-secondary: #9ca3af; /* Muted text */
+  --color-text-tertiary: #6b7280; /* Subtle text */
 
   /* Semantic */
-  --color-success: #06D6A0;
-  --color-error: #EF4444;
-  --color-warning: #F59E0B;
+  --color-success: #06d6a0;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
 
   /* Editor-specific */
-  --color-editor-bg: #0D1117;          /* GitHub-dark inspired */
-  --color-editor-gutter: #161B22;
-  --color-editor-line-highlight: #1A2233;
-  --color-tab-active: #2463EB;
-  --color-tab-inactive: #1F2937;
+  --color-editor-bg: #0d1117; /* GitHub-dark inspired */
+  --color-editor-gutter: #161b22;
+  --color-editor-line-highlight: #1a2233;
+  --color-tab-active: #2463eb;
+  --color-tab-inactive: #1f2937;
 }
 ```
 
@@ -176,6 +191,7 @@ The palette is a dark-mode-first design (like Webflow's Designer UI) with electr
 ## 5. Architecture
 
 ### App Structure
+
 ```
 codeflow/
 ├── package.json
@@ -233,6 +249,7 @@ codeflow/
 ```
 
 ### Core Data Flow
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                     USER INPUT                               │
@@ -327,6 +344,7 @@ The core output format that Webflow's Designer reads from the clipboard:
 ```
 
 ### Key mappings:
+
 - **nodes** → Each HTML element becomes a node with unique `_id`, tag, children refs, and class refs
 - **styles** → Each CSS class becomes a style entry with `styleLess` (Webflow's CSS string format)
 - **variants** → Responsive breakpoints: `medium` (tablet ≤991px), `small` (mobile landscape ≤767px), `tiny` (mobile portrait ≤478px)
@@ -334,14 +352,19 @@ The core output format that Webflow's Designer reads from the clipboard:
 - **children** → Array of child node `_id` strings
 
 ### Clipboard Copy Method:
+
 ```js
 // CRITICAL: Must use application/json MIME type
-document.addEventListener('copy', (e) => {
-  const json = JSON.stringify(webflowData);
-  e.clipboardData.setData('application/json', json);
-  e.preventDefault();
-}, { once: true });
-document.execCommand('copy');
+document.addEventListener(
+  "copy",
+  (e) => {
+    const json = JSON.stringify(webflowData);
+    e.clipboardData.setData("application/json", json);
+    e.preventDefault();
+  },
+  { once: true }
+);
+document.execCommand("copy");
 ```
 
 ---
@@ -373,6 +396,7 @@ document.execCommand('copy');
    - `padding-section-large` / `padding-section-medium` → vertical rhythm
 
 ### Mapping HTML → Client-First:
+
 ```
 <header>           → section_header
 <nav>              → navbar_component
@@ -395,6 +419,7 @@ document.execCommand('copy');
 ## 8. Responsive Breakpoint Strategy
 
 ### Webflow breakpoints mapped:
+
 ```
 Desktop (base)    → No variant (default styles)
 Tablet (≤991px)   → "medium" variant
@@ -403,6 +428,7 @@ Mobile P (≤478px) → "tiny" variant
 ```
 
 ### CSS Media Query → Webflow Variant mapping:
+
 ```css
 /* Input CSS */
 @media (max-width: 991px)  { ... }  →  variants.medium
@@ -411,6 +437,7 @@ Mobile P (≤478px) → "tiny" variant
 ```
 
 ### Auto-responsive behaviors:
+
 - Flex containers → Switch `flex-direction: row` to `column` on mobile
 - Font sizes → Scale down proportionally
 - Padding/margin → Reduce by ~40% on tablet, ~60% on mobile
@@ -473,6 +500,7 @@ Mobile P (≤478px) → "tiny" variant
 ## 10. Development Phases
 
 ### Phase 1: Foundation (Week 1)
+
 - [ ] Initialize Vite project
 - [ ] Set up GitHub repository
 - [ ] Connect Netlify for auto-deploy from `main`
@@ -482,6 +510,7 @@ Mobile P (≤478px) → "tiny" variant
 - [ ] Build tab switching UI
 
 ### Phase 2: Conversion Engine (Week 2)
+
 - [ ] Build HTML parser (DOM tree → node structure)
 - [ ] Build CSS parser (stylesheet → style rules)
 - [ ] Implement Client-First naming engine
@@ -491,6 +520,7 @@ Mobile P (≤478px) → "tiny" variant
 - [ ] Handle JS → Webflow custom code embed
 
 ### Phase 3: UI Polish & Animations (Week 3)
+
 - [ ] Hero section with animated background (subtle Three.js particles or CSS mesh gradient)
 - [ ] GSAP scroll-triggered animations for sections
 - [ ] Toast notification system (success/error)
@@ -500,6 +530,7 @@ Mobile P (≤478px) → "tiny" variant
 - [ ] Mobile responsive layout for the tool itself
 
 ### Phase 4: Testing & Launch (Week 4)
+
 - [ ] Test conversion with real HTML components (navbar, hero, cards, footer)
 - [ ] Test clipboard paste in Webflow Designer
 - [ ] Verify Client-First class naming
@@ -545,6 +576,7 @@ feature/*   → Feature branches (feature/editor, feature/converter, etc.)
 ```
 
 ### `.npmrc` (enforces pnpm)
+
 ```
 engine-strict=true
 shamefully-hoist=true
@@ -552,12 +584,15 @@ auto-install-peers=true
 ```
 
 ### Co-authorship
+
 All commits suggested by Claude include the trailer:
+
 ```
 Co-authored-by: Claude <claude@anthropic.com>
 ```
 
 ### `vercel.json`
+
 ```json
 {
   "headers": [
@@ -578,26 +613,31 @@ Co-authored-by: Claude <claude@anthropic.com>
 ## 12. Key Technical Challenges & Solutions
 
 ### Challenge 1: Clipboard MIME type
+
 **Problem:** Webflow reads `application/json` from clipboard, but the Clipboard API's `navigator.clipboard.write()` doesn't natively support custom MIME types in all browsers.
 
 **Solution:** Use the `document.execCommand('copy')` fallback inside a synthetic `copy` event listener, or use the newer `ClipboardItem` API with a blob:
+
 ```js
-const blob = new Blob([jsonString], { type: 'application/json' });
-const clipboardItem = new ClipboardItem({ 'application/json': blob });
+const blob = new Blob([jsonString], { type: "application/json" });
+const clipboardItem = new ClipboardItem({ "application/json": blob });
 await navigator.clipboard.write([clipboardItem]);
 ```
 
 ### Challenge 2: CSS → Webflow styleLess format
+
 **Problem:** Webflow uses a flat string format for styles (`styleLess`), not standard CSS objects.
 
 **Solution:** Parse CSS with a lightweight parser, convert each property-value pair to Webflow's semicolon-separated string: `"display: flex; padding: 2rem;"`. Map CSS shorthand properties to their Webflow equivalents.
 
 ### Challenge 3: Responsive conversion
+
 **Problem:** Users write `@media` queries, but Webflow uses variant objects keyed by breakpoint.
 
 **Solution:** Parse `@media` rules, match max-width values to Webflow breakpoints (991→medium, 767→small, 478→tiny), and place those styles in the appropriate variant object within each style entry.
 
 ### Challenge 4: Class deduplication
+
 **Problem:** Multiple elements may share the same CSS class, but Webflow expects each class definition to appear once in `styles[]` with a unique `_id`.
 
 **Solution:** Build a class registry during parsing. When a class name is encountered for the first time, generate a UUID and store the mapping. Subsequent elements reference the same UUID.
@@ -606,18 +646,18 @@ await navigator.clipboard.write([clipboardItem]);
 
 ## 13. Cost Analysis
 
-| Item | Cost |
-|------|------|
-| Vercel hosting (free tier) | $0/month |
-| GitHub (free, public repo) | $0/month |
-| Domain (optional, e.g., codeflow.dev) | ~$12/year |
-| pnpm | Free (MIT) |
-| CodeMirror 6 | Free (MIT) |
-| GSAP (free tier) | Free (no-charge license) |
-| Lenis | Free (MIT) |
-| Three.js (optional) | Free (MIT) |
-| Google Fonts | Free |
-| **Total** | **$0–$12/year** |
+| Item                                  | Cost                     |
+| ------------------------------------- | ------------------------ |
+| Vercel hosting (free tier)            | $0/month                 |
+| GitHub (free, public repo)            | $0/month                 |
+| Domain (optional, e.g., codeflow.dev) | ~$12/year                |
+| pnpm                                  | Free (MIT)               |
+| CodeMirror 6                          | Free (MIT)               |
+| GSAP (free tier)                      | Free (no-charge license) |
+| Lenis                                 | Free (MIT)               |
+| Three.js (optional)                   | Free (MIT)               |
+| Google Fonts                          | Free                     |
+| **Total**                             | **$0–$12/year**          |
 
 ---
 
@@ -644,5 +684,5 @@ await navigator.clipboard.write([clipboardItem]);
 
 ---
 
-*Document created: March 26, 2026*
-*Last updated: March 26, 2026*
+_Document created: March 26, 2026_
+_Last updated: March 26, 2026_

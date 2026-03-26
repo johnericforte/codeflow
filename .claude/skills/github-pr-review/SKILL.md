@@ -56,6 +56,7 @@ Then try your PR review request again.
 ### After Installation
 
 Once gh is installed, users must authenticate:
+
 ```bash
 gh auth login
 ```
@@ -73,12 +74,14 @@ gh auth login
 ### Approval Pattern
 
 Before posting ANY review, use AskUserQuestion to show:
+
 - File and line number for each comment
 - Exact comment text (including code suggestions)
 - Event type (APPROVE/REQUEST_CHANGES/COMMENT)
 - Overall review message
 
 **Example:**
+
 ```
 Question: "Ready to post this review?"
 Header: "PR Review"
@@ -91,7 +94,7 @@ Options:
 
 **ALWAYS use the pending review pattern, even for single comments:**
 
-```bash
+````bash
 # Step 1: Create PENDING review (no event field)
 gh api repos/:owner/:repo/pulls/<PR_NUMBER>/reviews \
   -X POST \
@@ -103,19 +106,21 @@ gh api repos/:owner/:repo/pulls/<PR_NUMBER>/reviews \
 
 ```suggestion
 // suggested code here
-```
+````
 
 Additional explanation...' \
-  --jq '{id, state}'
+ --jq '{id, state}'
 
 # Returns: {"id": <REVIEW_ID>, "state": "PENDING"}
 
 # Step 2: Submit the pending review
+
 gh api repos/:owner/:repo/pulls/<PR_NUMBER>/reviews/<REVIEW_ID>/events \
-  -X POST \
-  -f event="COMMENT" \
-  -f body="Optional overall review message"
-```
+ -X POST \
+ -f event="COMMENT" \
+ -f body="Optional overall review message"
+
+````
 
 ## Event Types
 
@@ -137,7 +142,7 @@ gh pr view <PR_NUMBER> --json commits --jq '.commits[-1].oid'
 
 # Repository info (usually auto-detected by gh)
 gh repo view --json owner,name
-```
+````
 
 ### Required Parameters
 
@@ -155,28 +160,31 @@ gh repo view --json owner,name
 ### Syntax Rules
 
 ✅ **DO:**
+
 - Use single quotes around parameters with `[]`: `'comments[][path]'`
 - Use `-f` for string values
 - Use `-F` for numeric values (line numbers)
 - Use triple backticks with `suggestion` identifier for code suggestions
 
 ❌ **DON'T:**
+
 - Use double quotes around `comments[][]` parameters
 - Mix up `-f` and `-F` flags
 - Forget to get commit SHA first
 
 ## Code Suggestions Format
 
-```bash
+````bash
 -f 'comments[][body]=Your comment explaining the issue
 
 ```suggestion
 // The suggested code that will replace the specified line(s)
 const fixed = "like this";
-```
+````
 
 Additional context or explanation after the suggestion.'
-```
+
+``````
 
 **Important**: Code suggestions replace the entire line or line range. Make sure the suggested code is complete and correct.
 
@@ -189,18 +197,22 @@ When suggesting changes to markdown files or documentation that contain triple b
 ```javascript
 // Suggested code with nested backticks
 const example = "value";
+``````
+
 ```
-````
-`````
+
+```
 
 Or use tildes:
 
-```markdown
-~~~suggestion
+````markdown
+````suggestion
 ```javascript
 const example = "value";
-```
-~~~
+````
+````
+
+````
 ```
 
 ## Common Mistakes
@@ -308,3 +320,4 @@ gh api repos/:owner/:repo/pulls/123/reviews/<REVIEW_ID>/events \
 - PR author gets one notification with full context
 - Can refine comments before posting
 - Professional, organized reviews
+````
